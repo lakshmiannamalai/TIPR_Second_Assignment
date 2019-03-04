@@ -86,8 +86,8 @@ def trainAndtest(args):
                 folderName = folderName + 'dog/'
             NoImages += len(os.listdir(folderName)) 
             
-        maxImage = 2
-        NoImages = maxImage*numClass
+        #maxImage = 2
+        #NoImages = maxImage*numClass
         inputs = np.zeros((NoImages,inSize))
         labMat = np.eye(numClass,numClass)
         labels = np.zeros((NoImages,numClass))
@@ -111,12 +111,12 @@ def trainAndtest(args):
                 imgNo += 1
                 
                 
-                if(imgNo<=maxImage):
-                    img = util.rgb2gray(mpimg.imread(imgName))
+                #if(imgNo<=maxImage):
+                img = util.rgb2gray(mpimg.imread(imgName))
                     
-                    inputs[itrNo,:] = img.reshape(inSize)
-                    labels[itrNo,:] = labMat[i]
-                    itrNo += 1
+                inputs[itrNo,:] = img.reshape(inSize)
+                labels[itrNo,:] = labMat[i]
+                itrNo += 1
     
     in_train, in_test, label_train, label_test = train_test_split(inputs, labels, test_size=0.1)
     scaler = StandardScaler()
